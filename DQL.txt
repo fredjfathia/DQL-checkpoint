@@ -1,0 +1,34 @@
+1) select * from CUSTOMERS
+
+2) select product_name,category 
+   from product where 
+   price BETWEEN 5000 AND 10000
+
+3) select * from product 
+   order by price desc
+
+4) select count(*)Number_Orders,avg(total_amount),max(total_amount),min(total_amount) 
+   from Orders 
+   group by product_id
+
+5) select count(*), customer_id 
+   from Orders g
+   roup by customer_id 
+   having count(*)>2
+
+6) select count(customer_id),extract(month from orderDate) 
+   from Orders 
+   where extract(year from orderDate)=2020 
+   group by extract(month from orderDate)
+
+7) select p.product_name,c.customer_name,o.orderDate 
+   from Product p,Orders o,Customers c 
+   where p.product_id=o.product_id and c.customer_id=o.customer_id;
+
+8) select product_id,customer_id,orderDate 
+   from Orders 
+   where extract(month from orderDate)=extract(month from sysDate)-3 ;
+
+9) select customer_id 
+   from customers 
+   where customer_id not in (select customer_id from orders);
